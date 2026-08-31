@@ -1,18 +1,9 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    https://shiny.posit.co/
-#
-
 library(shiny)
 library(shinydashboard)
 
 # Define UI for application that draws a histogram
 ui <- dashboardPage(
-  dashboardHeader(title = "TOTA INSTO Dashboard"),
+  dashboardHeader(title = "INSTO Dashboard"),
   dashboardSidebar(
     sidebarMenu(
       id = "tabs",
@@ -37,7 +28,9 @@ ui <- dashboardPage(
         p("For more water info go here: ", tags$a(
           href = "https://tota-water-dashboard.share.connect.posit.cloud/",
           "TOTA WATER DASHBOARD"
-        ))
+        )),
+        style = "font-size: 18px;"
+
       ),
       tabItem(
         tabName = "energy"
