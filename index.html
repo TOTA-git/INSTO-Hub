@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    html * {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      #footer-logo img {
+        min-width: 60px;
+      }
+      #footer-text p {
+        font-size: 11px !important;
+      }
+      #footer-credit p {
+        font-size: 11px !important;
+      }
+    }
+    
+    .top-content {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    /* Dashboard cards */
+    .big-card {
+        display: block;
+        max-width: 250px;
+        max-height: 150px;
+        margin: 20px 0;
+        padding: 40px;
+        
+        background: linear-gradient(145deg, #004B55, #00616B);
+        
+        text-decoration: none;
+        color: white;
+        
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 18px;
+        
+        text-align: left;
+        
+        box-shadow: 0 8px 20px rgba(0, 75, 85, 0.20);
+        
+        transition: 
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+        
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .big-card h2 {
+      margin-top: 5px;
+      margin-bottom: 20px;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .big-card ul {
+      text-align: left;
+      padding-bottom: 20px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    
+    .big-card h4 {
+      text-align: center;
+    }
+
+    .big-card:hover {
+        text-decoration: none;
+        color: white;
+        
+        background: linear-gradient(145deg, #005D67, #76ACA9);
+        
+        transform: translateY(-7px);
+        
+        box-shadow: 0 15px 30px rgba(0, 75, 85, 0.30);
+    }
+
+    .big-card:active {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(0, 75, 85, 0.25);
+    }
+    
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .logo-cont {
+      margin: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .logo {
+      height: 250px;
+      width: auto;
+      max-width: 800px;
+      object-fit: contain;
+    }
+    
+    footer {
+      position: relative; 
+      bottom: 0; 
+      left: 0; 
+      width: 100%; 
+      z-index: 9999;
+    }
+    
+    #footer-box {
+      width: 100%; 
+      background-color: #004B55; 
+      display: flex; 
+      align-items: center; 
+      padding: 20px 5%; 
+      box-sizing: border-box; 
+      color: white;
+    }
+    
+    #footer-logo {
+      width: 15%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+    }
+    
+    #footer-logo img {
+      display: block;
+      margin: 0 auto;
+    }
+    
+    #footer-text{
+      width: 60%; 
+      color: white; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      padding-left: 5%;
+    }
+    
+    #footer-credit p{
+      color: white; 
+      width: 100%; 
+      font-size: 14px; 
+      text-align: center; 
+      text-decoration: underline;
+    }
+    
+    h1, h2{
+      font-weight: 25;
+      line-height: 1.2;
+      font-size: calc(1.335rem + 1.02vw);
+    }
+    
+    body{
+      background-color: #ECF0F5;
+    }
+    
+  </style>
+
+  <title>TOTA INSTO HUB</title>
+  <link rel="icon" type="image/x-icon" href="www/tota_favicon.ico">
+</head>
+
+<body>
+  <div class="top-content">
+    <h1>TOTA INSTO DASHBOARD HUB</h1>
+    <p>Select an issue area below</p>
+    <div class="card-container">
+      <a href="https://tota-water-dashboard.share.connect.posit.cloud/" class="big-card">
+        <h2>Water Managment</h2>
+        <h4>TOTA Water Dashboard</h4>
+      </a>
+  
+      <a href="https://tota-water-dashboard.share.connect.posit.cloud/" class="big-card">
+        <h2>Soild Waste Managment</h2>
+        <h4>TOTA Solid Waste Dashboard</h4>
+      </a>
+    </div>
+  </div>
+  <div class="logo-cont">
+    <img src="www/TOTA_logo.png" class="logo">
+    <img src="www/INSTO_logo.png" class="logo">
+  </div>
+</body>
+
+<footer>
+  <div id="footer-box">
+    <div id="footer-logo">
+      <img src="www/side_bar_logo.png" width="80%">
+    </div>
+
+    <div id="footer-text">
+      <p style="font-weight: bold; margin-bottom: 5px;">
+        Thompson Okanagan Tourism Association
+      </p>
+
+      <a href="https://www.totabc.org/" target="_blank" style="color: white;">
+        www.totabc.org
+      </a>
+
+      <p style="margin-bottom: 2px;">
+        2280-D Leckie Road, Kelowna,
+      </p>
+
+      <p style="margin-bottom: 0;">
+        British Columbia, V1X 6G6
+      </p>
+    </div>
+
+    <div id="footer-credit">
+      <p>
+        <a href="https://ca.linkedin.com/in/alexis-samp-b89678342"
+           target="_blank"
+           style="color: white;">
+          Created by Alexis Samp
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+</html>
