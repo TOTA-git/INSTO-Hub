@@ -3,230 +3,457 @@
 <head>
   <style>
     html * {
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: 0;
     }
 
-    @media (max-width: 600px) {
-      #footer-logo img {
-        min-width: 60px;
-      }
-      #footer-text p {
-        font-size: 11px !important;
-      }
-      #footer-credit p {
-        font-size: 11px !important;
-      }
-    }
-    
-    .top-content {
-      text-align: center;
-      margin-top: 30px;
-    }
+    /* =========================
+       VIDEO HERO
+       ========================= */
 
-    /* Dashboard cards */
-    .big-card {
-        display: block;
-        max-width: 250px;
-        max-height: 150px;
-        margin: 20px 0;
-        padding: 40px;
-        
-        background: linear-gradient(145deg, #004B55, #00616B);
-        
-        text-decoration: none;
-        color: white;
-        
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 18px;
-        
-        text-align: left;
-        
-        box-shadow: 0 8px 20px rgba(0, 75, 85, 0.20);
-        
-        transition: 
-          transform 0.25s ease,
-          box-shadow 0.25s ease,
-          background 0.25s ease;
-        
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .big-card h2 {
-      margin-top: 5px;
-      margin-bottom: 20px;
-      font-weight: 400;
-      text-align: center;
-    }
-
-    .big-card ul {
-      text-align: left;
-      padding-bottom: 20px;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-    
-    .big-card h4 {
-      text-align: center;
-    }
-
-    .big-card:hover {
-        text-decoration: none;
-        color: white;
-        
-        background: linear-gradient(145deg, #005D67, #76ACA9);
-        
-        transform: translateY(-7px);
-        
-        box-shadow: 0 15px 30px rgba(0, 75, 85, 0.30);
-    }
-
-    .big-card:active {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 18px rgba(0, 75, 85, 0.25);
-    }
-    
-    .card-container {
+    .video-banner {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      overflow: hidden;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
     }
-    
-    .logo-cont {
-      margin: 40px;
+
+    .video-banner video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    /* Content sitting on top of video */
+    .video-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 30px;
+      max-width: 1000px;
+      margin-top: -20px;
+    }
+
+    .video-content h1 {
+      margin: 0 0 18px 0;
+      font-size: clamp(2.3rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: white;
+      letter-spacing: 2px;
+      line-height: 1.1;
+    }
+
+    .video-content h3 {
+      margin: 10px 0;
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+      font-weight: 300;
+      line-height: 1.5;
+      color: white;
+    }
+
+    .video-content .instruction {
+      margin-top: 28px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    /* =========================
+       HERO LOGOS
+       ========================= */
+
+    .hero-logos {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      z-index: 3;
+
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 45px;
     }
-    
-    .logo {
-      height: 250px;
+
+    .hero-logos img {
+      height: 125px;
       width: auto;
-      max-width: 800px;
+      max-width: 360px;
       object-fit: contain;
     }
-    
-    footer {
-      position: relative; 
-      bottom: 0; 
-      left: 0; 
-      width: 100%; 
-      z-index: 9999;
+
+    /* =========================
+       DASHBOARD CARDS
+       ========================= */
+
+    .top-content {
+      text-align: center;
+      margin-top: 20px;
     }
-    
-    #footer-box {
-      width: 100%; 
-      background-color: #004B55; 
-      display: flex; 
-      align-items: center; 
-      padding: 20px 5%; 
-      box-sizing: border-box; 
-      color: white;
-    }
-    
-    #footer-logo {
-      width: 15%; 
-      display: flex; 
-      align-items: center; 
+
+    .card-container {
+      display: flex;
       justify-content: center;
-    }
-    
-    #footer-logo img {
-      display: block;
-      margin: 0 auto;
-    }
-    
-    #footer-text{
-      width: 60%; 
-      color: white; 
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      padding-left: 5%;
-    }
-    
-    #footer-credit p{
-      color: white; 
-      width: 100%; 
-      font-size: 14px; 
-      text-align: center; 
-      text-decoration: underline;
-    }
-    
-    h1, h2{
-      font-weight: 25;
-      line-height: 1.2;
-      font-size: calc(1.335rem + 1.02vw);
+      gap: 50px;
+      flex-wrap: wrap;
+      margin: 35px 20px 50px 20px;
     }
     
     body{
-      background-color: #ECF0F5;
+      background: #ECF0F5;
     }
-    
+
+    .big-card {
+      display: block;
+      width: 250px;
+      min-height: 150px;
+
+      margin: 0;
+      padding: 40px;
+
+      background: white;
+
+      text-decoration: none;
+      color: #004B55;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+
+      text-align: left;
+
+      box-shadow: 0 8px 20px rgba(0, 75, 85, 0.20);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .big-card h2 {
+      font-weight: 400;
+      text-align: center;
+      padding-top: 45px;
+    }
+
+    .big-card h4 {
+      text-align: center;
+      font-weight: 400;
+    }
+
+    .big-card:hover {
+      text-decoration: none;
+      color: #004B55;
+
+      background: white;
+
+      transform: translateY(-7px);
+
+      box-shadow: 0 15px 30px rgba(0, 75, 85, 0.30);
+    }
+
+    .big-card:active {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0, 75, 85, 0.25);
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+
+    #footer-box {
+      width: 100%;
+      background-color: #004B55;
+
+      display: flex;
+      align-items: center;
+
+      padding: 25px 5%;
+
+      box-sizing: border-box;
+      color: white;
+    }
+
+    #footer-logo {
+      width: 15%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #footer-logo img {
+      display: block;
+      margin: 0 auto;
+      max-width: 120px;
+    }
+
+    #footer-text {
+      width: 60%;
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding-left: 5%;
+    }
+
+    #footer-credit {
+      width: 25%;
+    }
+
+    #footer-credit p {
+      color: white;
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 600px) {
+
+      .video-banner {
+        height: 500px;
+      }
+
+      .video-content {
+        padding: 20px;
+      }
+
+      .video-content h1 {
+        font-size: 2.3rem;
+        letter-spacing: 1px;
+      }
+
+      .video-content h3 {
+        font-size: 1rem;
+      }
+
+      .video-content .instruction {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+      }
+
+      .hero-logos {
+        bottom: 25px;
+        gap: 25px;
+      }
+
+      .hero-logos img {
+        height: 50px;
+        max-width: 150px;
+      }
+
+      .card-container {
+        margin-top: 25px;
+      }
+
+      .big-card {
+        width: 220px;
+        padding: 30px;
+      }
+
+      #footer-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+
+      #footer-logo,
+      #footer-text,
+      #footer-credit {
+        width: 100%;
+        padding-left: 0;
+      }
+
+      #footer-text {
+        align-items: center;
+      }
+
+    }
+
   </style>
 
   <title>TOTA INSTO HUB</title>
-  <link rel="icon" type="image/x-icon" href="www/tota_favicon.ico">
+
+  <link rel="icon"
+        type="image/x-icon"
+        href="www/tota_favicon.ico">
+
 </head>
 
+
 <body>
+
+  <!-- =========================
+       VIDEO HERO
+       ========================= -->
+
+  <div class="video-banner">
+
+    <video autoplay muted loop playsinline>
+      <source src="www/tota_banner.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div></div>
+
+
+    <!-- Text over video -->
+
+    <div class="video-content">
+
+      <h1>
+        TOTA INSTO DASHBOARD HUB
+      </h1>
+
+      <h3>
+        Developed in support of the UN Tourism International
+        Network of Sustainable Tourism Observatories
+      </h3>
+      
+      <h3 class="instruction">
+        Select an issue area below
+      </h3>
+
+    </div>
+
+
+    <!-- Logos inside hero -->
+
+    <div class="hero-logos">
+
+      <a href="https://www.totabc.org/">
+        <img src="www/TOTA_logo.png"
+           alt="Thompson Okanagan Tourism Association">
+      </a>
+      
+      <a href="https://www.untourism.int/observatories/thompson-okanagan">
+        <img src="www/INSTO_logo.png" href="https://www.untourism.int/observatories/thompson-okanagan"
+           alt="UN Tourism INSTO">
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       DASHBOARD CARDS
+       ========================= -->
+
   <div class="top-content">
-    <h1>TOTA INSTO DASHBOARD HUB</h1>
-    <p>Select an issue area below</p>
     <div class="card-container">
-      <a href="https://tota-water-dashboard.share.connect.posit.cloud/" class="big-card">
-        <h2>Water Management</h2>
-        <h4>TOTA Water Dashboard</h4>
+
+      <a href="https://tota-water-dashboard.share.connect.posit.cloud/"
+         class="big-card">
+
+        <h2>
+          Water<br>Management
+        </h2>
+
       </a>
-  
-      <a href="https://tota-solid-waste-dashboard.share.connect.posit.cloud/" class="big-card">
-        <h2>Soild Waste Management</h2>
-        <h4>TOTA Solid Waste Dashboard</h4>
+
+
+      <a href="https://tota-solid-waste-dashboard.share.connect.posit.cloud/"
+         class="big-card">
+
+        <h2>
+          Solid Waste Management
+        </h2>
+
       </a>
+
     </div>
+
   </div>
-  <div class="logo-cont">
-    <img src="www/TOTA_logo.png" class="logo">
-    <img src="www/INSTO_logo.png" class="logo">
-  </div>
-</body>
 
-<footer>
-  <div id="footer-box">
-    <div id="footer-logo">
-      <img src="www/side_bar_logo.png" width="80%">
-    </div>
 
-    <div id="footer-text">
-      <p style="font-weight: bold; margin-bottom: 5px;">
-        Thompson Okanagan Tourism Association
-      </p>
+  <!-- =========================
+       FOOTER
+       ========================= -->
 
-      <a href="https://www.totabc.org/" target="_blank" style="color: white;">
-        www.totabc.org
-      </a>
+  <footer>
 
-      <p style="margin-bottom: 2px;">
-        2280-D Leckie Road, Kelowna,
-      </p>
+    <div id="footer-box">
 
-      <p style="margin-bottom: 0;">
-        British Columbia, V1X 6G6
-      </p>
-    </div>
+      <div id="footer-logo">
 
-    <div id="footer-credit">
-      <p>
-        <a href="https://ca.linkedin.com/in/alexis-samp-b89678342"
+        <img src="www/side_bar_logo.png"
+             width="80%"
+             alt="TOTA logo">
+
+      </div>
+
+
+      <div id="footer-text">
+
+        <p style="font-weight: bold; margin-bottom: 5px;">
+          Thompson Okanagan Tourism Association
+        </p>
+
+        <a href="https://www.totabc.org/"
            target="_blank"
            style="color: white;">
-          Created by Alexis Samp
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
 
+          www.totabc.org
+
+        </a>
+
+        <p style="margin-bottom: 2px;">
+          2280-D Leckie Road, Kelowna,
+        </p>
+
+        <p style="margin-bottom: 0;">
+          British Columbia, V1X 6G6
+        </p>
+
+      </div>
+
+
+      <div id="footer-credit">
+
+        <p>
+
+          <a href="https://ca.linkedin.com/in/alexis-samp-b89678342"
+             target="_blank"
+             style="color: white;">
+
+            Created by Alexis Samp
+
+          </a>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
 </html>
