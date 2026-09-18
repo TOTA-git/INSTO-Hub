@@ -1,27 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TOTA INSTO HUB</title>
+  <link rel="icon" type="image/x-icon" href="www/tota_favicon.ico">
+
+  <!-- Font Awesome for icons -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <style>
-    html * {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* =========================
+       BASE / RESET
+       ========================= */
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #004B55;
+      --primary-soft: #76ACA9;
+      --accent: #F6BC1A;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #004B55;
+      --muted: #5b6b74;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* =========================
        VIDEO HERO
        ========================= */
-
-    .video-banner {
+    .banner {
       position: relative;
-      width: 100%;
-      height: 540px;
-      overflow: hidden;
+      min-height: 40vh;
+     /* background: linear-gradient(135deg, var(--primary), var(--primary-soft)); */
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
-    .video-banner video {
+    .banner img {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -32,49 +70,59 @@
       z-index: 0;
     }
 
-    /* Content sitting on top of video */
-    .video-content {
+    /* Overlay for readability */
+    .banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .banner-content {
       position: relative;
       z-index: 2;
       text-align: center;
       color: white;
-      padding: 30px;
-      max-width: 1000px;
-      margin-top: -20px;
+      max-width: 950px;
+      padding: 2rem 1rem;
     }
 
-    .video-content h1 {
-      margin: 0 0 18px 0;
-      font-size: clamp(2.3rem, 5vw, 4.5rem);
+    .banner-content h1 {
+      font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: 1px;
+      line-height: 1.15;
+      margin: 0 0 1rem;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .banner-content h3 {
+      font-size: clamp(1rem, 1.5vw, 1.4rem);
       font-weight: 300;
-      color: white;
-      letter-spacing: 2px;
-      line-height: 1.1;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.95);
+      max-width: 600px;
+      margin: 0 auto 1.25rem;
     }
 
-    .video-content h3 {
-      margin: 10px 0;
-      font-size: clamp(1rem, 1.5vw, 1.3rem);
+    .banner-content .instruction {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
       font-weight: 300;
-      line-height: 1.5;
-      color: white;
-    }
-
-    .video-content .instruction {
-      margin-top: 28px;
-      font-size: 0.95rem;
-      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 3px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      padding-bottom: 0.25rem;
     }
 
-    /* =========================
-       HERO LOGOS
-       ========================= */
-
     .hero-logos {
-      position: absolute;
-      bottom: 30px;
+      position: relative;
+      bottom: 20px;
       left: 0;
       right: 0;
       z-index: 3;
@@ -86,87 +134,138 @@
     }
 
     .hero-logos img {
-      height: 125px;
+      height: 175px;
       width: auto;
-      max-width: 360px;
+      max-width: 400px;
       object-fit: contain;
+    }
+
+    .banner-credit {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      z-index: 3;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.3px;
     }
 
     /* =========================
        DASHBOARD CARDS
        ========================= */
-
     .top-content {
       text-align: center;
-      margin-top: 20px;
+      padding: 4rem 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 600;
+      color: var(--primary);
+      margin: 0 0 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
     }
 
     .card-container {
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      flex-wrap: wrap;
-      margin: 35px 20px 50px 20px;
-    }
-    
-    body{
-      background: #ECF0F5;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+
     }
 
     .big-card {
-      display: block;
-      width: 250px;
-      min-height: 150px;
-
-      margin: 0;
-      padding: 40px;
-
-      background: white;
-
-      text-decoration: none;
-      color: #004B55;
-
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 18px;
-
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       text-align: left;
-
-      box-shadow: 0 8px 20px rgba(0, 75, 85, 0.20);
-
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      color: var(--primary);
+      text-decoration: none;
+      box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.04),
+        0 10px 22px rgba(0, 0, 0, 0.07);
       transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
-
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .big-card h2 {
-      font-weight: 400;
-      text-align: center;
-      padding-top: 45px;
-    }
-
-    .big-card h4 {
-      text-align: center;
-      font-weight: 400;
+    .big-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 55%, rgba(0, 75, 85, 0.06) 100%);
+      pointer-events: none;
     }
 
     .big-card:hover {
-      text-decoration: none;
-      color: #004B55;
-
-      background: white;
-
       transform: translateY(-7px);
-
-      box-shadow: 0 15px 30px rgba(0, 75, 85, 0.30);
+      box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.06),
+        0 22px 44px rgba(0, 0, 0, 0.13);
+      background: linear-gradient(145deg, #ffffff, #eef2f7);
     }
 
     .big-card:active {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(0, 75, 85, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+     /* background: linear-gradient(135deg, #0093a8, var(--primary)); */
+      color: #004B55;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .big-card h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+    }
+
+    .big-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0 0 1.5rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: auto;
+    }
+
+    .card-link i {
+      transition: transform 0.3s ease;
+    }
+
+    .big-card:hover .card-link i {
+      transform: translateX(5px);
     }
 
     /* =========================
@@ -231,31 +330,20 @@
     }
 
     /* =========================
-       MOBILE
+       MOBILE / RESPONSIVE
        ========================= */
-
-    @media (max-width: 600px) {
-
-      .video-banner {
-        height: 500px;
+    @media (max-width: 768px) {
+      .banner {
+        min-height: 50vh;
       }
 
-      .video-content {
-        padding: 20px;
+      .banner-content h1 {
+        font-size: 2rem;
+        letter-spacing: 0.5px;
       }
 
-      .video-content h1 {
-        font-size: 2.3rem;
-        letter-spacing: 1px;
-      }
-
-      .video-content h3 {
+      .banner-content h3 {
         font-size: 1rem;
-      }
-
-      .video-content .instruction {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
       }
 
       .hero-logos {
@@ -268,19 +356,18 @@
         max-width: 150px;
       }
 
+      .top-content {
+        padding: 3rem 1rem;
+      }
+
       .card-container {
-        margin-top: 25px;
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        padding: 0 1rem;
       }
 
       .big-card {
-        width: 220px;
-        padding: 30px;
-      }
-
-      #footer-box {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+        padding: 1.75rem;
       }
 
       #footer-logo,
@@ -288,116 +375,139 @@
       #footer-credit {
         width: 100%;
         padding-left: 0;
+        font-size: 10px;
       }
 
-      #footer-text {
-        align-items: center;
+    @media (max-width: 380px) {
+      .hero-logos img {
+        height: 35px;
+        max-width: 120px;
       }
-
     }
-
   </style>
-
-  <title>TOTA INSTO HUB</title>
-
-  <link rel="icon"
-        type="image/x-icon"
-        href="www/tota_favicon.ico">
-
 </head>
-
 
 <body>
 
   <!-- =========================
        VIDEO HERO
        ========================= -->
-
-  <div class="video-banner">
-
-    <video autoplay muted loop playsinline>
-      <source src="www/tota_banner.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <div></div>
-
+  <div class="banner">
+  
+     <img  src="www/banner.png"
+             width="100%"
+             alt="TOTA logo">
 
     <!-- Text over video -->
-
-    <div class="video-content">
-
-      <h1>
-        TOTA INSTO DASHBOARD HUB
-      </h1>
-
+    <div class="banner-content">
+      <h1>TOTA INSTO DASHBOARD HUB</h1>
       <h3>
         Developed in support of the UN Tourism International
         Network of Sustainable Tourism Observatories
       </h3>
-      
-      <h3 class="instruction">
-        Select an issue area below
-      </h3>
-
     </div>
 
 
-    <!-- Logos inside hero -->
-
-    <div class="hero-logos">
-
-      <a href="https://www.totabc.org/">
-        <img src="www/TOTA_logo.png"
-           alt="Thompson Okanagan Tourism Association">
-      </a>
-      
-      <a href="https://www.untourism.int/observatories/thompson-okanagan">
-        <img src="www/INSTO_logo.png" href="https://www.untourism.int/observatories/thompson-okanagan"
-           alt="UN Tourism INSTO">
-      </a>
-
-    </div>
-
+    <div class="banner-credit">Thompson Okanagan/Allen Jones</div>
+    
   </div>
-
+  
+  
 
   <!-- =========================
        DASHBOARD CARDS
        ========================= -->
+  <main class="top-content">
+    <div class="hero-logos">
+      <a href="https://www.totabc.org/">
+        <img src="www/TOTA_logo.png"
+           alt="Thompson Okanagan Tourism Association">
+      </a>
+      <a href="https://www.untourism.int/observatories/thompson-okanagan">
+        <img src="www/INSTO_logo.png" href="https://www.untourism.int/observatories/thompson-okanagan"
+           alt="UN Tourism INSTO">
+      </a>
+    </div>
+    <h2 class="section-title">Choose a Dashboard</h2>
+    <p class="section-subtitle">Select a sustainability issue area.</p>
 
-  <div class="top-content">
     <div class="card-container">
 
       <a href="https://tota-water-dashboard.share.connect.posit.cloud/"
-         class="big-card">
+         class="big-card"
+         aria-label="Open Water Management Dashboard">
 
-        <h2>
-          Water<br>Management
-        </h2>
+        <div class="card-icon">
+          <i class="fa-solid fa-droplet" aria-hidden="true"></i>
+        </div>
 
+        <h2>Water Management</h2>
+        <p>Explore water supply, consumption, groundwater wells, drought levels, and fish habitat.</p>
+
+        <span class="card-link">
+          View dashboard
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
       </a>
 
-
       <a href="https://tota-solid-waste-dashboard.share.connect.posit.cloud/"
-         class="big-card">
+         class="big-card"
+         aria-label="Open Solid Waste Management Dashboard">
 
-        <h2>
-          Solid Waste Management
-        </h2>
+        <div class="card-icon">
+          <i class="fa-solid fa-trash" aria-hidden="true"></i>
+        </div>
 
+        <h2>Solid Waste Management</h2>
+        <p>Explore waste disposal rates and organic waste facilities.</p>
+
+        <span class="card-link">
+          View dashboard
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+      
+      <a href="https://tota-insto-hub.share.connect.posit.cloud/"
+         class="big-card"
+         aria-label="Open Wastewater Management Dashboard">
+
+        <div class="card-icon">
+          <i class="fa-solid fa-water"></i>
+        </div>
+
+        <h2>Wastewater Management</h2>
+        <p>Coming Soon.</p>
+
+        <span class="card-link">
+          View dashboard
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+      
+      <a href="https://tota-insto-hub.share.connect.posit.cloud/"
+         class="big-card"
+         aria-label="Open Energy Management Dashboard">
+
+        <div class="card-icon">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+
+        <h2>Energy Management</h2>
+        <p>Coming Soon.</p>
+
+        <span class="card-link">
+          View dashboard
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
       </a>
 
     </div>
-
-  </div>
-
+  </main>
 
   <!-- =========================
        FOOTER
        ========================= -->
-
-  <footer>
+<footer>
 
     <div id="footer-box">
 
@@ -454,6 +564,5 @@
     </div>
 
   </footer>
-
 </body>
 </html>
