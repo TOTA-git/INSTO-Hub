@@ -44,14 +44,24 @@
       display: flex;
       flex-direction: column;
     }
+    
+    #topBar {
+      width: 100%;
+      background-color: #004B55;
 
-    /* =========================
-       VIDEO HERO
-       ========================= */
+      display: flex;
+      align-items: center;
+
+      padding: 25px 5%;
+      margin-bottom: 10px;
+
+      box-sizing: border-box;
+      color: white;
+    }
+
     .banner {
       position: relative;
       min-height: 40vh;
-     /* background: linear-gradient(135deg, var(--primary), var(--primary-soft)); */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -175,7 +185,7 @@
 
     .card-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       max-width: 800px;
       margin: 0 auto;
@@ -388,10 +398,11 @@
 </head>
 
 <body>
+  <div id="topBar">
+    
+  </div>
 
-  <!-- =========================
-       VIDEO HERO
-       ========================= -->
+
   <div class="banner">
   
      <img  src="www/banner.png"
@@ -442,7 +453,7 @@
         </div>
 
         <h2>Water Management</h2>
-        <p>Explore water supply, consumption, groundwater wells, drought levels, and fish habitat.</p>
+        <p>Explore water supply, consumption, groundwater wells, and fish habitat.</p>
 
         <span class="card-link">
           View dashboard
@@ -493,6 +504,40 @@
         </div>
 
         <h2>Energy Management</h2>
+        <p>Coming Soon.</p>
+
+        <span class="card-link">
+          View dashboard
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+      
+      <a href="https://tota-insto-hub.share.connect.posit.cloud/"
+         class="big-card"
+         aria-label="Open Climate Action Dashboard">
+
+        <div class="card-icon">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <h2>Climate Action</h2>
+        <p>Coming Soon.</p>
+
+        <span class="card-link">
+          View dashboard
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+      
+      <a href="https://tota-insto-hub.share.connect.posit.cloud/"
+         class="big-card"
+         aria-label="Open Local Satisfaction Dashboard">
+
+        <div class="card-icon">
+          <i class="fa-solid fa-people-group"></i>
+        </div>
+
+        <h2>Local Satisfaction</h2>
         <p>Coming Soon.</p>
 
         <span class="card-link">
